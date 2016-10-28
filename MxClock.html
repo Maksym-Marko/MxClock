@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mx Clock</title>
+</head>
+<body>
+	
+	<canvas id="MxClock" width="300" height="300"></canvas>
+
+	<script>
+		window.onload = function(){
+			var canvas = document.getElementById( 'MxClock' ),
+				c = canvas.getContext( '2d' ),
+				radius = 100,
+				MATH_PI = Math.PI * 2;
+
+			c.fillStyle = 'black';
+			c.fillRect( 0, 0, canvas.width, canvas.height );
+
+			function PaintClock( x, y ){
+				this.x = x;
+				this.y = y;
+				this.angleSMH = [];		
+				this.sizeSMH = [ 3, 6, 12 ];
+			}
+
+			PaintClock.prototype.draw = function(){
+
+				// Clock circle
+				c.strokeStyle = '#fff';
+				c.beginPath();
+				c.arc( this.x, this.y, radius, 0, MATH_PI, false );
+				//c.stroke();
+				c.closePath();
+
+				for( var h = 1; h <= 60; h++ ){
+					x = this.x + radius * Math.cos( MATH_PI * h / 60 );
+					y = this.y + radius * Math.sin( MATH_PI * h / 60 );
+
+					c.fillStyle = '#fff';
+					c.beginPath();
+					c.arc( x, y, 1, 0, MATH_PI, false );
+					c.fill();
+					c.closePath();
+				}
+
+				// Date					
+				d = new Date(),
+				s = d.getSeconds(),
+				m = d.getMinutes(),
+				h = d.getHours(),
+				h = h % 12;
+				hPercentM = ( m * 100 / 60 ) * 0.01,
+				corectDate = 15;
+
+				this.angleSMH = [ MATH_PI * ( s - corectDate ) / 60, MATH_PI * ( m - corectDate ) / 60, MATH_PI * ( ( h + hPercentM ) - 15 ) / 12  ];
+
+				// Arrows
+				for( var i = 0; i < 3; i++ ){
+
+					x = this.x + radius * Math.cos( this.angleSMH[i] );
+					y = this.y + radius * Math.sin( this.angleSMH[i] );
+					c.fillStyle = '#fff';
+					c.beginPath();
+					c.arc( x, y, this.sizeSMH[i], 0, MATH_PI, false );
+					c.fill();
+					c.closePath();
+
+				}					
+
+			}
+
+			var clock = new PaintClock( 150, 150 );
+
+			setInterval( function(){
+				c.fillStyle = 'black';
+				c.fillRect( 0, 0, canvas.width, canvas.height );
+
+				c.strokeStyle = 'yellow';
+				c.beginPath();
+				c.moveTo( 150, 0 );
+				c.lineTo( 150, canvas.height );
+				c.stroke();
+				c.closePath();
+
+				c.strokeStyle = 'yellow';
+				c.beginPath();
+				c.moveTo( 0, 150 );
+				c.lineTo( canvas.width, 150 );
+				c.stroke();
+				c.closePath();
+
+				clock.draw();
+			},1000 );
+
+		}
+	</script>
+</body>
+</html>
