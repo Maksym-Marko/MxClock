@@ -13,16 +13,24 @@
 			var canvas = document.getElementById( 'MxClock' ),
 				c = canvas.getContext( '2d' ),
 				radius = 100,
-				MATH_PI = Math.PI * 2;
+				MATH_PI = Math.PI * 2,
+				fontSize = 25;
 
 			c.fillStyle = 'black';
-			c.fillRect( 0, 0, canvas.width, canvas.height );
+			c.beginPath();
+			c.arc( canvas.width / 2, canvas.height / 2, canvas.width / 2,  0, MATH_PI, false );	
+			c.fill();
+			c.closePath();
+
+			function isInteger( num ){
+				return ( num ^ 0 ) === num;
+			}
 
 			function PaintClock( x, y ){
 				this.x = x;
 				this.y = y;
 				this.angleSMH = [];		
-				this.sizeSMH = [ 3, 6, 12 ];
+				this.sizeSMH = [ 25, 35, 45 ];
 			}
 
 			PaintClock.prototype.draw = function(){
@@ -32,67 +40,81 @@
 				c.beginPath();
 				c.arc( this.x, this.y, radius, 0, MATH_PI, false );
 				//c.stroke();
-				c.closePath();
-
-				for( var h = 1; h <= 60; h++ ){
-					x = this.x + radius * Math.cos( MATH_PI * h / 60 );
-					y = this.y + radius * Math.sin( MATH_PI * h / 60 );
-
-					c.fillStyle = '#fff';
-					c.beginPath();
-					c.arc( x, y, 1, 0, MATH_PI, false );
-					c.fill();
-					c.closePath();
-				}
+				c.closePath();				
 
 				// Date					
 				d = new Date(),
 				s = d.getSeconds(),
 				m = d.getMinutes(),
-				h = d.getHours(),
+				h = d.getHours();
 				h = h % 12;
-				hPercentM = ( m * 100 / 60 ) * 0.01,
+				hPercentM = ( m * 100 / 60 ) * 0.01;
 				corectDate = 15;
 
-				this.angleSMH = [ MATH_PI * ( s - corectDate ) / 60, MATH_PI * ( m - corectDate ) / 60, MATH_PI * ( ( h + hPercentM ) - 15 ) / 12  ];
+				this.angleSMH = [
+					MATH_PI * ( ( h + hPercentM ) - 15 ) / 12,
+					MATH_PI * ( m - corectDate ) / 60,
+					MATH_PI * ( s - corectDate ) / 60				
+				];
 
 				// Arrows
 				for( var i = 0; i < 3; i++ ){
 
 					x = this.x + radius * Math.cos( this.angleSMH[i] );
 					y = this.y + radius * Math.sin( this.angleSMH[i] );
-					c.fillStyle = '#fff';
+
+					rgd = c.createRadialGradient( x, y, this.sizeSMH[i], x, y, 0 );
+					rgd.addColorStop( 1, '#fff' );
+					rgd.addColorStop( 0, '#000' );
+					c.fillStyle = rgd;
+					//c.fillRect( x, y, this.sizeSMH[i], this.sizeSMH[i] );
+					
+					//c.fillStyle = '#fff';
 					c.beginPath();
 					c.arc( x, y, this.sizeSMH[i], 0, MATH_PI, false );
 					c.fill();
 					c.closePath();
 
-				}					
+				}
+
+				// Draw num
+				c.font = fontSize + 'px Arial';
+
+				for( var hn = 1; hn <= 60; hn++ ){
+					x = this.x + radius * Math.cos( MATH_PI * hn / 60 );
+					y = this.y + radius * Math.sin( MATH_PI * hn / 60 );
+					xNum = this.x + radius * Math.cos( MATH_PI * ( hn - 15 ) / 60 );
+					yNum = this.y + radius * Math.sin( MATH_PI * ( hn - 15 ) / 60 );
+
+					getNum = hn / 5;
+					if( isInteger( getNum ) ){
+						c.fillStyle = '#1d1c1c';
+						c.fillText( hn / 5, xNum - ( fontSize / 2.2 ) , yNum + ( fontSize / 2.2 ) );
+					} else{
+						c.fillStyle = '#1d1c1c';
+						c.beginPath();
+						c.arc( x, y, 1, 0, MATH_PI, false );
+						c.fill();
+						c.closePath();
+					}
+					
+				}				
 
 			}
 
 			var clock = new PaintClock( 150, 150 );
 
 			setInterval( function(){
+				c.clearRect( 0, 0, canvas.width, canvas.height );
 				c.fillStyle = 'black';
-				c.fillRect( 0, 0, canvas.width, canvas.height );
-
-				c.strokeStyle = 'yellow';
+				//c.fillRect( 0, 0, canvas.width, canvas.height );
 				c.beginPath();
-				c.moveTo( 150, 0 );
-				c.lineTo( 150, canvas.height );
-				c.stroke();
-				c.closePath();
+				c.arc( canvas.width / 2, canvas.height / 2, canvas.width / 2,  0, MATH_PI, false );	
+				c.fill();
+				c.closePath();	
 
-				c.strokeStyle = 'yellow';
-				c.beginPath();
-				c.moveTo( 0, 150 );
-				c.lineTo( canvas.width, 150 );
-				c.stroke();
-				c.closePath();
-
-				clock.draw();
-			},1000 );
+				clock.draw();				
+			},1000 );	
 
 		}
 	</script>
