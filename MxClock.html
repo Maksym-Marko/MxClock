@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<title>Mx Clock</title>
@@ -18,7 +18,13 @@
 
 			c.fillStyle = 'black';
 			c.beginPath();
-			c.arc( canvas.width / 2, canvas.height / 2, canvas.width / 2,  0, MATH_PI, false );	
+			c.arc( canvas.width / 2, canvas.height / 2, canvas.width / 2,  0, MATH_PI, false );
+			c.fill();
+			c.closePath();
+
+			c.fillStyle = '#fff';
+			c.beginPath();
+			c.arc( canvas.width / 2, canvas.height / 2, 52,  0, MATH_PI, false );
 			c.fill();
 			c.closePath();
 
@@ -29,20 +35,18 @@
 			function PaintClock( x, y ){
 				this.x = x;
 				this.y = y;
-				this.angleSMH = [];		
+				this.angleSMH = [];
 				this.sizeSMH = [ 25, 35, 45 ];
 			}
 
 			PaintClock.prototype.draw = function(){
 
 				// Clock circle
-				c.strokeStyle = '#fff';
 				c.beginPath();
 				c.arc( this.x, this.y, radius, 0, MATH_PI, false );
-				//c.stroke();
-				c.closePath();				
+				c.closePath();
 
-				// Date					
+				// Date
 				d = new Date(),
 				s = d.getSeconds(),
 				m = d.getMinutes(),
@@ -54,7 +58,7 @@
 				this.angleSMH = [
 					MATH_PI * ( ( h + hPercentM ) - 15 ) / 12,
 					MATH_PI * ( m - corectDate ) / 60,
-					MATH_PI * ( s - corectDate ) / 60				
+					MATH_PI * ( s - corectDate ) / 60
 				];
 
 				// Arrows
@@ -67,9 +71,6 @@
 					rgd.addColorStop( 1, '#fff' );
 					rgd.addColorStop( 0, '#000' );
 					c.fillStyle = rgd;
-					//c.fillRect( x, y, this.sizeSMH[i], this.sizeSMH[i] );
-					
-					//c.fillStyle = '#fff';
 					c.beginPath();
 					c.arc( x, y, this.sizeSMH[i], 0, MATH_PI, false );
 					c.fill();
@@ -96,9 +97,8 @@
 						c.arc( x, y, 1, 0, MATH_PI, false );
 						c.fill();
 						c.closePath();
-					}
-					
-				}				
+					}					
+				}
 
 			}
 
@@ -107,14 +107,19 @@
 			setInterval( function(){
 				c.clearRect( 0, 0, canvas.width, canvas.height );
 				c.fillStyle = 'black';
-				//c.fillRect( 0, 0, canvas.width, canvas.height );
 				c.beginPath();
-				c.arc( canvas.width / 2, canvas.height / 2, canvas.width / 2,  0, MATH_PI, false );	
+				c.arc( canvas.width / 2, canvas.height / 2, canvas.width / 2,  0, MATH_PI, false );
 				c.fill();
-				c.closePath();	
+				c.closePath();
 
-				clock.draw();				
-			},1000 );	
+				c.fillStyle = '#fff';
+				c.beginPath();
+				c.arc( canvas.width / 2, canvas.height / 2, 52,  0, MATH_PI, false );
+				c.fill();
+				c.closePath();
+
+				clock.draw();
+			},1000 );
 
 		}
 	</script>
