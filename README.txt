@@ -1,1 +1,0 @@
-﻿MxClock - часы на Canvas

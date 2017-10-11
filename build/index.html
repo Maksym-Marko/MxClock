@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Mx Clock</title>
+	</head>
+	<body>
+		
+		<canvas id="MxClock"></canvas>
+
+		<script src="MxClock.min.js"></script>
+
+		<script>
+
+			new CreateClock( 'MxClock', {
+
+				sizeClock: 			400, // Clock size 'integer or decimal'
+				moveToCenter: 		3.4, // Change the location of the rooms to the center 'integer or decimal'
+				backgroundColor: 	'#003366', // Background color 'string'
+
+				centerCircle: 		22.5, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#ffd308', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'orange', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'blue', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				fontSizeNumbers: 	25, // Font number size 'integer or decimal'
+				colorNumbers: 		'#6699CC', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#6699CC', // Color of seconds points 'string'
+				sizeSecondsDots: 	1, // Size of seconds points 'integer or decimal'
+
+				// arrows
+				hourArrowSize: 		40, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	50, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	60, // An arrow of a second 'integer or decimal'
+
+			} );
+
+		</script>
+	</body>
+</html>

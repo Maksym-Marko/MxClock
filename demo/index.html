@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Demo Mx Clock</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+		<style>
+			body{
+				width: 1400px;
+			}
+			h2{
+				font-family: 'Open Sans', sans-serif;
+				text-align: center;
+			}
+			.MxClockWrap{
+				position: relative;
+				float: left;
+				margin: 10px 20px;
+				text-align: center;
+				width: 300px;
+			}
+			.clearfix{
+				width: 100%;
+				clear: both;
+				margin: 20px 0px;
+			}
+			.MxClockWrap5{
+				background-color: #232425;
+				color: #fff;
+				padding-bottom: 40px;
+			}
+			.MxClockWrap7{
+				background-color: #2e0e3b;
+				color: #fff;
+				padding-bottom: 40px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="MxClockWrap">
+			<h2>Default settings</h2>
+			<canvas id="MxClock1"></canvas>
+		</div>
+
+		<div class="MxClockWrap">
+			<h2>Color style - night</h2>
+			<canvas id="MxClock2"></canvas>
+		</div>
+
+		<div class="MxClockWrap">
+			<h2>Color style - light</h2>
+			<canvas id="MxClock3"></canvas>
+		</div>
+
+		<div class="MxClockWrap">
+			<h2>Color style - modern</h2>
+			<canvas id="MxClock4"></canvas>
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="MxClockWrap MxClockWrap5">
+			<h2>Color style - orange</h2>
+			<canvas id="MxClock5"></canvas>
+		</div>
+
+		<div class="MxClockWrap">
+			<h2>Color style - lemon</h2>
+			<canvas id="MxClock6"></canvas>
+		</div>
+
+		<div class="MxClockWrap MxClockWrap7">
+			<h2>Color style - dark</h2>
+			<canvas id="MxClock7"></canvas>
+		</div>
+
+		<div class="MxClockWrap">
+			<h2>Color style - cherry ice cream</h2>
+			<canvas id="MxClock8"></canvas>
+		</div>
+
+		<div class="clearfix"></div>
+		
+		<!-- script -->
+		<script src="MxClock.min.js"></script>
+
+		<script>
+
+			// example 1
+			new CreateClock( 'MxClock1' );
+
+			// example 2
+			new CreateClock( 'MxClock2', {
+
+				moveToCenter: 		3.4, // Change the location of the rooms to the center 'integer or decimal'
+				backgroundColor: 	'#003366', // Background color 'string'
+
+				centerCircle: 		22.5, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#ffd308', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'orange', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'blue', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				fontSizeNumbers: 	25, // Font number size 'integer or decimal'
+				colorNumbers: 		'#6699CC', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#6699CC', // Color of seconds points 'string'
+				sizeSecondsDots: 	1, // Size of seconds points 'integer or decimal'
+
+				// arrows
+				hourArrowSize: 		40, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	50, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	60, // An arrow of a second 'integer or decimal'
+
+			} );
+
+			// example 3
+			new CreateClock( 'MxClock3', {
+
+				backgroundColor: 	'#fffff', // Background color 'string'
+
+				centerCircle: 		198, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#f8f8f8', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'#ffffff', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'#ad9696', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				colorNumbers: 		'#f8555f', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#f8555f', // Color of seconds points 'string'
+				
+				// arrows
+				hourArrowSize: 		20, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	30, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	40, // An arrow of a second 'integer or decimal'
+			} );
+
+			// example 4
+			new CreateClock( 'MxClock4', {
+
+				backgroundColor: 	'#dddfeb', // Background color 'string'
+
+				centerCircle: 		140, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#10c6fc', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'#ffffff', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'#002453', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				colorNumbers: 		'#ff2b4a', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#10c6fc', // Color of seconds points 'string'
+				
+				// arrows
+				hourArrowSize: 		24, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	36, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	49, // An arrow of a second 'integer or decimal'
+
+			} );
+
+			// example 5
+			new CreateClock( 'MxClock5', {
+
+				sizeClock: 			150, // Clock size 'integer or decimal'
+				moveToCenter: 		3.4, // Change the location of the rooms to the center 'integer or decimal'
+				backgroundColor: 	'#ffffff', // Background color 'string'
+
+				centerCircle: 		10, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#d14a2c', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'#ffffff', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'#d14a2c', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				fontSizeNumbers: 	15, // Font number size 'integer or decimal'
+				colorNumbers: 		'#c0c0c0', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#c0c0c0', // Color of seconds points 'string'
+				sizeSecondsDots: 	0.6, // Size of seconds points 'integer or decimal'
+
+				// arrows
+				hourArrowSize: 		10, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	20, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	30, // An arrow of a second 'integer or decimal'
+
+			} );
+
+			// example 6
+			new CreateClock( 'MxClock6', {
+
+				sizeClock: 			150, // Clock size 'integer or decimal'
+				moveToCenter: 		3.4, // Change the location of the rooms to the center 'integer or decimal'
+				backgroundColor: 	'#d3a722', // Background color 'string'
+
+				centerCircle: 		54, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#dddddd', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'#ffffff', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'#d3a722', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				fontSizeNumbers: 	15, // Font number size 'integer or decimal'
+				colorNumbers: 		'#9a6600', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#d3a722', // Color of seconds points 'string'
+
+				// arrows
+				hourArrowSize: 		30, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	20, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	10, // An arrow of a second 'integer or decimal'
+
+			} );
+
+			// example 7
+			new CreateClock( 'MxClock7', {
+
+				sizeClock: 			150, // Clock size 'integer or decimal'
+				moveToCenter: 		3.4, // Change the location of the rooms to the center 'integer or decimal'
+				backgroundColor: 	'#203757', // Background color 'string'
+
+				centerCircle: 		5, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#dddddd', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'#292950', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'#ffffff', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				fontSizeNumbers: 	15, // Font number size 'integer or decimal'
+				colorNumbers: 		'#ffffff', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#ffffff', // Color of seconds points 'string'
+
+				// arrows
+				hourArrowSize: 		10, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	20, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	30, // An arrow of a second 'integer or decimal'
+
+			} );
+
+			// example 8
+			new CreateClock( 'MxClock8', {
+
+				sizeClock: 			150, // Clock size 'integer or decimal'
+				moveToCenter: 		4, // Change the location of the rooms to the center 'integer or decimal'
+				backgroundColor: 	'#fff', // Background color 'string'
+
+				centerCircle: 		55, // The size of the central circle 'integer or decimal'
+				colorCenterCircle: 	'#e97a79', // The color of the central circle 'string'
+
+				// gradient for arrows
+				gradientCenter: 	'#ffffff', // The color of the arrows. The gradient begins at the center 'string'
+				gradientOutside: 	'#4d8c2e', // The color of the arrows. The gradient begins outside 'string'
+
+				// numbers
+				fontSizeNumbers: 	12, // Font number size 'integer or decimal'
+				colorNumbers: 		'#3c3c3c', // Color of numbers 'string'
+
+				// seconds dots
+				colorSecondsDots: 	'#3c3c3c', // Color of seconds points 'string'
+				sizeSecondsDots: 	0.6, // Size of seconds points 'integer or decimal'
+
+				// arrows
+				hourArrowSize: 		5, // An hour's arrow'integer or decimal'
+				minuteArrowSize: 	12, // An arrow of a minute 'integer or decimal'
+				secondArrowSize: 	28, // An arrow of a second 'integer or decimal'
+
+			} );
+
+		</script>
+	</body>
+</html>
