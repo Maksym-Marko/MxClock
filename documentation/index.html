@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MxClock documentation</title>
+	<link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<div class="mx-content">
+	
+	<h3>
+		<i>
+			<span class="mx-bold">"MxClock"</span> Documentation by Sergiy Werth
+		</i>
+	</h3>
+
+	<h2>
+		MXCLOCK
+	</h2>
+
+	<div class="mx-info_by">
+		<div class="mx-info_by1">
+			<p>
+				Created: 11.10.17
+			</p>
+			<p>
+				By: Sergiy Werth
+			</p>
+			<p>
+				Facebook: <a href="https://www.facebook.com/profile.php?id=100011204207772" target="_blank">Sergiy Werth</a>
+			</p>
+		</div>
+		<div class="mx-info_by2">
+			<p>
+				Thank you for purchasing this product. If you have any questions, write to me in the <a href="https://www.facebook.com/profile.php?id=100011204207772" target="_blank">facebook</a>. <br>
+				I will be glad to help.
+			</p>
+		</div>
+	</div>
+	<div class="clearFix"></div>
+
+	<h3 id="toTable">
+		<i>
+			Table of content
+		</i>
+	</h3>
+	<p>
+		A. <a href="#connect">Connect the script to the page</a>
+	</p>
+	<p>
+		B. <a href="#customizable">Customizable appearance</a>
+	</p>
+	<p>
+		C. <a href="#styles">Different styles</a>
+	</p>
+
+	<h3 id="connect">
+		<i>
+			Connect the script to the page
+		</i>
+	</h3>
+	<p>
+		To connect the clock to your page, you need to create the container in which it will be displayed and connect the script. <br>
+		The container is a <span class="mx-p_code"><span><</span>canvas></span> tag. <br>		
+		Pay attention to the script's path! In this case (<span class="mx-p_code"><span><</span>script src="./assets/js/MxClock.min.js"><span><</span>/script></span>), the relative path is used. <br>
+		You can also use the absolute path on your website. For example, this is correct: <br>
+		<span class="mx-p_code"><span><</span>script src="http://yourwebsite.com/assets/js/MxClock.min.js"><span><</span>/script></span>
+	</p>
+
+	<code>
+		<span><</span>!DOCTYPE html> <br>
+		<span><</span>html lang="en"> <br>
+		<span><</span>head> <br>
+
+			<span class="mx-code_child">
+				<span><</span>meta charset="UTF-8"> <br>
+				<span><</span>title>Document<span><</span>/title>
+			</span>			
+
+		<span><</span>/head> <br>
+		<span><</span>body> <br>
+
+			<span class="mx-code_child"> <br>
+				<span><</span>canvas id="MxClock"><span><</span>/canvas> <span class="mx-code_comment"><span><</span>!-- Container --></span> <br><br>
+
+				<span><</span>script src="./assets/js/MxClock.min.js"><span><</span>/script> <span class="mx-code_comment"><span><</span>!-- script --></span>
+			</span>  <br>
+			
+		<span><</span>/body> <br>
+		<span><</span>/html>
+	</code>
+
+	<p>		
+		The next step is to call the script:
+	</p>
+
+	<code>
+		<span><</span>!DOCTYPE html> <br>
+		<span><</span>html lang="en"> <br>
+		<span><</span>head> <br>
+
+			<span class="mx-code_child">
+				<span><</span>meta charset="UTF-8"> <br>
+				<span><</span>title>Document<span><</span>/title>
+			</span>			
+
+		<span><</span>/head> <br>
+		<span><</span>body> <br>
+
+			<span class="mx-code_child"> <br>
+				<span><</span>canvas id="MxClock"><span><</span>/canvas> <span class="mx-code_comment"><span><</span>!-- Container --></span> <br><br>
+
+				<span><</span>script src="./assets/js/MxClock.min.js"><span><</span>/script> <span class="mx-code_comment"><span><</span>!-- script --></span> <br><br>
+
+				<span><</span>script> <br>
+					<span class="mx-code_child">
+						<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock'</span> ); <br>
+					</span>
+				<span><</span>/script>
+
+			</span>  <br>
+			
+		<span><</span>/body> <br>
+		<span><</span>/html>
+	</code>
+
+	<h3 id="customizable">
+		<i>
+			Customizable appearance
+		</i>
+	</h3>
+
+	<p>
+		You can customize the style of the clock to your liking. The second function argument is the transfer of the property object. <br> 
+		Below is a list of properties that you can use to set up your watch.
+	</p>
+	
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock'</span>, {
+
+			<span class="mx-code_child"> <br>
+
+				sizeClock<span class="mx-code_php_character">:</span> 			<span class="mx-code_php_number">400</span>, <span class="mx-code_comment">// Clock size 'integer or decimal'</span><br>
+				moveToCenter<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">3.4</span>, <span class="mx-code_comment">// Change the location of the rooms to the center 'integer or decimal'</span><br>
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#003366'</span>, <span class="mx-code_comment">// Background color 'string'</span><br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">22.5</span>, <span class="mx-code_comment">// The size of the central circle 'integer or decimal'</span><br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffd308'</span>, <span class="mx-code_comment">// The color of the central circle 'string'</span><br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'orange'</span>, <span class="mx-code_comment">// The color of the arrows. The gradient begins at the center 'string'</span><br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'blue'</span>, <span class="mx-code_comment">// The color of the arrows. The gradient begins outside 'string'</span><br><br>
+
+				<span class="mx-code_comment">// numbers</span><br>
+				fontSizeNumbers<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">25</span>, <span class="mx-code_comment">// Font number size 'integer or decimal'</span><br>
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#6699CC'</span>, <span class="mx-code_comment">// Color of numbers 'string'</span><br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#6699CC'</span>, <span class="mx-code_comment">// Color of seconds points 'string'</span><br>
+				sizeSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">1</span>, <span class="mx-code_comment">// Size of seconds points 'integer or decimal'</span><br><br>
+
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">40</span>, <span class="mx-code_comment">// An hour's arrow'integer or decimal'</span><br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">50</span>, <span class="mx-code_comment">// An arrow of a minute 'integer or decimal'</span><br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">60</span>, <span class="mx-code_comment">// An arrow of a second 'integer or decimal'</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<h3 id="styles">
+		<i>
+			Different styles
+		</i>
+	</h3>
+
+	<p>
+		The script is flexible enough to use. See Clock settings.
+	</p>
+
+	<!-- example 1 -->
+	<div class="MxClockWrap">
+		<h4>Default settings</h4>
+		<canvas id="MxClock1"></canvas>
+	</div>
+
+	<code>
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock1'</span> );
+	</code>
+
+	<!-- example 2 -->
+	<div class="MxClockWrap">
+		<h4>Style - night</h4>
+		<canvas id="MxClock2"></canvas>
+	</div>
+
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock2'</span>, {
+
+			<span class="mx-code_child"> <br>
+				
+				moveToCenter<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">3.4</span>,<br>
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#003366'</span>,<br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">22.5</span>,<br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffd308'</span>,<br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'orange'</span>,<br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'blue'</span>,<br><br>
+
+				<span class="mx-code_comment">// numbers</span><br>
+				fontSizeNumbers<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">25</span>,<br>
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#6699CC'</span>,<br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#6699CC'</span>,<br>
+				sizeSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">1</span>,<br><br>
+
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">40</span>,<br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">50</span>,<br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">60</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<!-- example 3 -->
+	<div class="MxClockWrap">
+		<h4>Style - light</h4>
+		<canvas id="MxClock3"></canvas>
+	</div>
+
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock3'</span>, {
+
+			<span class="mx-code_child"> <br>
+						
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#fffff'</span>,<br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">198</span>,<br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#f8f8f8'</span>,<br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ad9696'</span>,<br><br>
+				
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#f8555f'</span>,<br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#f8555f'</span>,<br><br>
+
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">20</span>,<br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">30</span>,<br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">40</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<!-- example 4 -->
+	<div class="MxClockWrap">
+		<h4>Style - modern</h4>
+		<canvas id="MxClock4"></canvas>
+	</div>
+
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock4'</span>, {
+
+			<span class="mx-code_child"> <br>
+				
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#dddfeb'</span>,<br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">140</span>,<br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#10c6fc'</span>,<br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#002453'</span>,<br><br>
+				
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#ff2b4a'</span>,<br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#10c6fc'</span>,<br><br>
+
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">24</span>,<br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">36</span>,<br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">49</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<!-- example 5 -->
+	<div class="MxClockWrap MxClockWrap5">
+			<h4>Style - orange</h4>
+			<canvas id="MxClock5"></canvas>
+		</div>
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock5'</span>, {
+
+			<span class="mx-code_child"> <br>
+
+				sizeClock<span class="mx-code_php_character">:</span> 			<span class="mx-code_php_number">150</span>,<br>
+				moveToCenter<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">3.4</span>,<br>
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">10</span>,<br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#d14a2c'</span>,<br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#d14a2c'</span>,<br><br>
+
+				<span class="mx-code_comment">// numbers</span><br>
+				fontSizeNumbers<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">15</span>,<br>
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#c0c0c0'</span>,<br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#c0c0c0'</span>,<br>
+				sizeSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">0.6</span>,<br><br>
+
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">10</span>,<br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">20</span>,<br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">30</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<!-- example 6 -->
+	<div class="MxClockWrap">
+		<h4>Style - lemon</h4>
+		<canvas id="MxClock6"></canvas>
+	</div>
+
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock6'</span>, {
+
+			<span class="mx-code_child"> <br>
+
+				sizeClock<span class="mx-code_php_character">:</span> 			<span class="mx-code_php_number">150</span>,<br>
+				moveToCenter<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">3.4</span>,<br>
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#d3a722'</span>,<br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">54</span>,<br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#dddddd'</span>,<br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#d3a722'</span>,<br><br>
+
+				<span class="mx-code_comment">// numbers</span><br>
+				fontSizeNumbers<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">15</span>,<br>
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#9a6600'</span>,<br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#d3a722'</span>,<br><br>
+				
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">30</span>,<br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">20</span>,<br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">10</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<!-- example 7 -->
+	<div class="MxClockWrap MxClockWrap7">
+		<h4>Style - dark</h4>
+		<canvas id="MxClock7"></canvas>
+	</div>
+
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock7'</span>, {
+
+			<span class="mx-code_child"> <br>
+
+				sizeClock<span class="mx-code_php_character">:</span> 			<span class="mx-code_php_number">150</span>,<br>
+				moveToCenter<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">3.4</span>,<br>
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#203757'</span>,<br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">5</span>,<br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#dddddd'</span>,<br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#292950'</span>,<br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br><br>
+
+				<span class="mx-code_comment">// numbers</span><br>
+				fontSizeNumbers<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">15</span>,<br>
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#ffffff'</span>,<br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br><br>
+
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">10</span>,<br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">20</span>,<br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">30</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<!-- example 8 -->
+	<div class="MxClockWrap">
+		<h4>Style - cherry ice cream</h4>
+		<canvas id="MxClock8"></canvas>
+	</div>
+
+	<code>
+
+		<span class="mx-code_php_function">new</span> <span class="mx-code_php_function_name">CreateClock</span>( <span class="mx-code_str">'#MxClock8'</span>, {
+
+			<span class="mx-code_child"> <br>
+
+				sizeClock<span class="mx-code_php_character">:</span> 			<span class="mx-code_php_number">150</span>,<br>
+				moveToCenter<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">4</span>,<br>
+				backgroundColor<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br>
+
+				centerCircle<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">50</span>,<br>
+				colorCenterCircle<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#e97a79'</span>,<br><br>
+
+				<span class="mx-code_comment">// gradient for arrows</span><br>
+				gradientCenter<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#ffffff'</span>,<br>
+				gradientOutside<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#4d8c2e'</span>,<br><br>
+
+				<span class="mx-code_comment">// numbers</span><br>
+				fontSizeNumbers<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">12</span>,<br>
+				colorNumbers<span class="mx-code_php_character">:</span> 		<span class="mx-code_str">'#3c3c3c'</span>,<br><br>
+
+				<span class="mx-code_comment">// seconds dots</span> <br>
+				colorSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_str">'#3c3c3c'</span>,<br>
+				sizeSecondsDots<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">0.6</span>,<br><br>
+
+				<span class="mx-code_comment">// arrows</span><br>
+				hourArrowSize<span class="mx-code_php_character">:</span> 		<span class="mx-code_php_number">5</span>,<br>
+				minuteArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">12</span>,<br>
+				secondArrowSize<span class="mx-code_php_character">:</span> 	<span class="mx-code_php_number">28</span><br>
+
+			</span> <br>
+
+		} );
+
+	</code>
+
+	<p>		
+		Again, I want to thank you for acquiring my work. If you have any questions or desire to improve the clock, write, I will be happy to answer. <br>		
+		I wish success in your work and good mood :)
+	</p>
+
+	<p>
+		<a href="#toTable">Go To Table of Contents</a>
+	</p>
+
+	<!-- script -->
+	<script src="./assets/js/MxClock.min.js"></script>
+
+	<script>
+
+		// example 1
+		new CreateClock( '#MxClock1' );
+
+		// example 2
+		new CreateClock( '#MxClock2', {
+
+			moveToCenter: 3.4,
+			backgroundColor: '#003366',
+			centerCircle: 22.5,
+			colorCenterCircle: '#ffd308',
+
+			// gradient for arrows
+			gradientCenter: 'orange',
+			gradientOutside: 'blue',
+
+			// numbers
+			fontSizeNumbers: 25,
+			colorNumbers: '#6699CC',
+
+			// seconds dots 
+			colorSecondsDots: '#6699CC',
+			sizeSecondsDots: 1,
+
+			// arrows
+			hourArrowSize: 40,
+			minuteArrowSize: 50,
+			secondArrowSize: 60
+
+		} );
+
+		// example 3
+		new CreateClock( '#MxClock3', {
+
+			backgroundColor: '#fffff',
+			centerCircle: 198,
+			colorCenterCircle: '#f8f8f8',
+
+			// gradient for arrows
+			gradientCenter: '#ffffff',
+			gradientOutside: '#ad9696',
+
+			colorNumbers: '#f8555f',
+
+			// seconds dots 
+			colorSecondsDots: '#f8555f',
+
+			// arrows
+			hourArrowSize: 20,
+			minuteArrowSize: 30,
+			secondArrowSize: 40
+
+		} );
+
+		// example 4
+		new CreateClock( '#MxClock4', {
+
+			backgroundColor: '#dddfeb',
+			centerCircle: 140,
+			colorCenterCircle: '#10c6fc',
+
+			// gradient for arrows
+			gradientCenter: '#ffffff',
+			gradientOutside: '#002453',
+
+			colorNumbers: '#ff2b4a',
+
+			// seconds dots 
+			colorSecondsDots: '#10c6fc',
+
+			// arrows
+			hourArrowSize: 24,
+			minuteArrowSize: 36,
+			secondArrowSize: 49
+
+		} );
+
+		new CreateClock( '#MxClock5', {
+
+			sizeClock: 150,
+			moveToCenter: 3.4,
+			backgroundColor: '#ffffff',
+			centerCircle: 10,
+			colorCenterCircle: '#d14a2c',
+
+			// gradient for arrows
+			gradientCenter: '#ffffff',
+			gradientOutside: '#d14a2c',
+
+			// numbers
+			fontSizeNumbers: 15,
+			colorNumbers: '#c0c0c0',
+
+			// seconds dots 
+			colorSecondsDots: '#c0c0c0',
+			sizeSecondsDots: 0.6,
+
+			// arrows
+			hourArrowSize: 10,
+			minuteArrowSize: 20,
+			secondArrowSize: 30
+
+		} );
+
+		// example 6
+		new CreateClock( '#MxClock6', {
+
+			sizeClock: 150,
+			moveToCenter: 3.4,
+			backgroundColor: '#d3a722',
+			centerCircle: 54,
+			colorCenterCircle: '#dddddd',
+
+			// gradient for arrows
+			gradientCenter: '#ffffff',
+			gradientOutside: '#d3a722',
+
+			// numbers
+			fontSizeNumbers: 15,
+			colorNumbers: '#9a6600',
+
+			// seconds dots 
+			colorSecondsDots: '#d3a722',
+
+			// arrows
+			hourArrowSize: 30,
+			minuteArrowSize: 20,
+			secondArrowSize: 10
+
+		} );
+
+		// example 7
+		new CreateClock( '#MxClock7', {
+
+			sizeClock: 150,
+			moveToCenter: 3.4,
+			backgroundColor: '#203757',
+			centerCircle: 5,
+			colorCenterCircle: '#dddddd',
+
+			// gradient for arrows
+			gradientCenter: '#292950',
+			gradientOutside: '#ffffff',
+
+			// numbers
+			fontSizeNumbers: 15,
+			colorNumbers: '#ffffff',
+
+			// seconds dots 
+			colorSecondsDots: '#ffffff',
+			// arrows
+			hourArrowSize: 10,
+			minuteArrowSize: 20,
+			secondArrowSize: 30
+
+		} );
+
+		// example 8
+		new CreateClock( '#MxClock8', {
+
+			sizeClock: 150,
+			moveToCenter: 4,
+			backgroundColor: '#ffffff',
+			centerCircle: 50,
+			colorCenterCircle: '#e97a79',
+
+			// gradient for arrows
+			gradientCenter: '#ffffff',
+			gradientOutside: '#4d8c2e',
+
+			// numbers
+			fontSizeNumbers: 12,
+			colorNumbers: '#3c3c3c',
+
+			// seconds dots 
+			colorSecondsDots: '#3c3c3c',
+			sizeSecondsDots: 0.6,
+
+			// arrows
+			hourArrowSize: 5,
+			minuteArrowSize: 12,
+			secondArrowSize: 28
+
+		} );
+
+		</script>
+
+	</div>
+	
+</body>
+</html>

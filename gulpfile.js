@@ -13,8 +13,8 @@ gulp.task( 'compress', () => {
 	        	min:'.min.js'
 	        }
 	    }))
-	    .pipe(gulp.dest('build'))
-	    .pipe(gulp.dest('demo'))
+	    .pipe(gulp.dest('build/assets/js'))
+	    .pipe(gulp.dest('demo/assets/js'))
 } );
 
 // compile

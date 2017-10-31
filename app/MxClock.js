@@ -1,4 +1,3 @@
-// MxClock
 class CreateClock{
 	constructor(ID, settings){
 
